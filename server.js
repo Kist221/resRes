@@ -12,6 +12,7 @@ var PORT = process.env.PORT || 3000;
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 // (DATA)
 // =============================================================
@@ -36,9 +37,9 @@ var reservations = [
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+// app.get("/", function(req, res) {
+// 	res.sendFile(path.join(__dirname, "public", "index.html"));
+// });
 
 app.get("/api", function(req, res) {
 	return res.json(reservations);
